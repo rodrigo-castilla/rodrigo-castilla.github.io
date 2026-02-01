@@ -1,0 +1,18 @@
+/* --- LA MAGIA DEL GRID --- */
+.layout-grid {
+    display: grid;
+    height: 100vh; /* Que el grid ocupe toda la pantalla */
+    
+    /* DEFINICIÓN DE COLUMNAS: */
+    /* 250px para el sidebar, "1fr" (una fracción) para el resto */
+    grid-template-columns: 250px 1fr; 
+    
+    /* DEFINICIÓN DE FILAS: */
+    /* 60px para el Header, "1fr" para el resto hacia abajo */
+    grid-template-rows: 60px 1fr; 
+    
+    /* EL MAPA VISUAL: Aquí decides dónde va cada cosa */
+    grid-template-areas: 
+        "header header"  /* El header ocupa las dos columnas de arriba */
+        "sidebar main";  /* Abajo: Izquierda sidebar, Derecha main */
+}

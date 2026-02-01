@@ -1,0 +1,27 @@
+/* ================== ANIMACIONES ================== */
+
+/* Scroll Indicator Bounce */
+.scroll-indicator {
+    font-size: 0.9rem;
+    color: #666;
+    animation: bounce 2s infinite;
+    margin-top: 50px;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* Scroll Reveal Classes */
+.hidden-element {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease-out;
+}
+
+.show-element {
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,22 @@
+/* --- LAYOUT GRID (La estructura madre) --- */
+.layout-grid {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: auto 1fr; 
+    grid-template-rows: 60px 1fr;
+    grid-template-areas: 
+        "header header"
+        "sidebar main";
+    overflow: hidden; /* Evita doble scroll */
+}
+
+/* --- MAIN CONTENT (El área scrolleable) --- */
+.content {
+    grid-area: main;
+    padding: 40px;
+    
+    /* Scroll interno para el Main */
+    overflow-y: auto; 
+    height: 100%; 
+    scroll-behavior: smooth;
+}

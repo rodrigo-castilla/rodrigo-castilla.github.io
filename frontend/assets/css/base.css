@@ -1,0 +1,13 @@
+/* RESET BÁSICO */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #131313;
+    color: #e0e0e0;
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+}

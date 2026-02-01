@@ -1,0 +1,143 @@
+/* ======== ANIMACIONES ======= */
+
+
+/* ======== SIDEBAR GLOBAL ======== */
+.sidebar {
+    /* Grid */
+    grid-area: sidebar; /* Tú eres el "sidebar" del mapa */
+    
+    /* Estructura */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacio entre cajitas (Outline, FAQ, etc) */
+    padding: 20px;
+    height: 100%;
+
+    /* Efecto Sombra */
+    background: linear-gradient(to left, #131313, #444444);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding 0.3s ease;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sidebar-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    flex-grow: 1;
+    /* Añadimos visibility a la transición para que espere al fade */
+    transition: 
+        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
+        opacity 0.4s ease 0.1s, 
+        visibility 0.5s;
+
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0); /* Posición original */
+}
+
+/* Sidebar cerrada */
+.sidebar.is-closed {
+    width: 80px;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, padding 0.4s ease 0.2s;
+}
+
+.sidebar.is-closed #sidebar-title {
+    display: none;
+}
+
+.sidebar.is-closed .sidebar-container {
+    opacity: 0;
+    /* Mantenemos visibility: hidden pero la transición lo hará suave */
+    visibility: hidden; 
+    transform: translateX(-150px);
+    /* Importante: para que no ocupe espacio físico mientras se cierra */
+    pointer-events: none; 
+    transition: opacity 0.2s ease 0s, visibility 0s linear 0.2s;
+}
+
+.sidebar.is-closed .sidebar-header-item button {
+    transform: translateX(0);
+}
+
+/* ======= SIDEBAR HEADER ===== */
+.sidebar-header-item {
+    /* Grid */
+    display: flex;
+    position: relative;
+
+    /* Borde */
+    border-bottom: 5px solid transparent;
+    border-image: linear-gradient(0.25turn, rgb(184, 184, 184), rgb(107, 107, 107), rgba(45, 45, 45, 0));
+    border-image-slice: 1;
+
+    /* Estructura */
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+#sidebar-title {
+    flex-grow: 1;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+}
+
+.sidebar-header-item button {
+    color: white;
+    background-color: transparent;
+    
+    cursor: pointer;
+
+    width: 30px;
+    height: 30px;
+
+    border: none;
+    border-radius: 10px;
+
+    transition: background-color 0.5s ease, 
+                color 0.5s ease,
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.sidebar-header-item button:hover {
+    background-color: rgb(255, 206, 100);
+    color: black;
+}
+
+/* ======== SECTIONS ======= */
+
+
+/* ======= GITHUB ======= */
+/* Empujar el Github link al fondo del sidebar automáticamente */
+.github-item {
+    /* Estructura */
+    display: flex;
+    flex-direction: row;
+    margin-top: auto; 
+    font-size: 0.8em;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    /* Colores */
+    border-color: #444;
+    background-color: #555555;
+}
+
+#github-icon {
+    width: 20px;
+    height: auto;
+}
+
+#github-link {
+    text-decoration: none;
+    color: rgb(255, 206, 100);
+    align-content: center;
+}

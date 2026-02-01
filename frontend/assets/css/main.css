@@ -1,0 +1,17 @@
+/* 1. Bases y Reset (Lo primero siempre) */
+@import "base.css";
+
+/* 2. Estructura y Layout (El esqueleto) */
+@import "grid.css";   /* Si tienes utilidades genéricas de grid */
+@import "layout.css"; /* Tu layout específico (sidebar + main) */
+
+/* 3. Componentes Globales */
+@import "header.css";
+@import "sidebar.css";
+@import "elements.css";
+
+/* 4. Diseño de Contenido Específico */
+@import "sections.css";
+
+/* 5. Animaciones y Efectos (Al final para poder sobrescribir si es necesario) */
+@import "animations.css";

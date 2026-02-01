@@ -1,0 +1,165 @@
+/* ================= HEADER GLOBAL ================= */
+.header-bar {
+    grid-area: header;
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: rgb(34, 34, 34);
+    position: relative;
+    z-index: 1000; /* Siempre por encima */
+}
+
+/* ================= LOGO ================= */
+.logo-item {
+    padding-top: 3px;
+}
+
+/* ================= MENU PRINCIPAL ================= */
+.menu-item {
+    display: flex;
+    height: 100%;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+/* Reseteo de lista principal */
+.menu-item > ul {
+    list-style: none;
+    display: flex;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    align-items: center; /* Centra verticalmente los items */
+}
+
+/* Items del menú principal */
+.menu-item > ul > li {
+    position: relative; /* Clave para anclar el submenu */
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Enlaces del menú principal */
+.menu-item > ul > li > a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+    height: 100%;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    cursor: pointer;
+
+    /* Efecto "Cortina Azul" (Tu diseño original) */
+    background: linear-gradient(to bottom, rgb(83, 140, 160) 50%, transparent 50%);
+    background-size: 100% 200%;
+    background-position: bottom; 
+    transition: background-position 0.4s ease-out;
+}
+
+.menu-item > ul > li > a:hover {
+    background-position: top;
+}
+
+/* ================= SUBMENU (LA CORTINA ADAPTABLE) ================= */
+.submenu {
+    position: absolute;
+    top: 100%; /* Justo debajo del header */
+    left: 0;
+    width: 200px; /* Ancho fijo para el desplegable */
+    background-color: #333;
+    
+    /* FLEXBOX COLUMNA: Vital para que salgan uno bajo otro */
+    display: flex;
+    flex-direction: column !important; 
+    
+    /* ANIMACIÓN DE ALTURA ADAPTABLE */
+    /* Usamos max-height con un valor alto. 
+       Si el contenido es poco, ocupará poco. Si agregas TikTok, crecerá. */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.5s ease-in-out, opacity 0.3s ease;
+    
+    /* Bordes redondeados abajo */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
+    /* Sombra para que destaque sobre el fondo negro */
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.5);
+}
+
+/* ACTIVACIÓN: Al hacer hover en el padre (.dropdown-item) */
+.dropdown-item:hover .submenu {
+    /* Le damos espacio de sobra. El menú crecerá hasta donde necesite el contenido, 
+       pero nunca pasará de 1000px (seguro que no tienes tantos items) */
+    max-height: 1000px; 
+    opacity: 1;
+}
+
+/* ================= ITEMS DEL SUBMENU ================= */
+/* IMPORTANTE: Reseteamos la altura heredada del menú principal */
+.submenu li {
+    width: 100%;
+    height: auto !important; /* Dejamos que la altura la defina el contenido */
+    display: block; /* Asegura que ocupen su propia línea */
+}
+
+/* Enlaces DENTRO del submenu */
+.submenu a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alineado a la izquierda */
+    padding: 15px 20px; /* Espacio cómodo */
+    width: 100%;
+    height: auto !important;
+    color: #e0e0e0;
+    font-size: 0.9em;
+    
+    /* Quitamos el gradiente azul heredado */
+    background: transparent !important; 
+    transition: background-color 0.2s ease;
+}
+
+.submenu a:hover {
+    background-color: #444 !important; /* Gris más claro al pasar el ratón */
+}
+
+/* Iconos del submenu (Whatsapp, Email, etc.) */
+.submenu img {
+    margin-right: 12px;
+    width: 20px;
+    height: auto;
+    object-fit: contain;
+}
+
+/* ================= SEARCH ================= */
+.search-item #search-container {
+    display: flex;
+    border-radius: 20px;
+    background-color: rgb(162, 162, 162);
+    padding-left: 10px;
+    align-items: center;
+}
+
+#search-input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: 150px;
+    padding: 5px;
+}
+
+#search-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+}
